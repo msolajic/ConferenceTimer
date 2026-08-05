@@ -57,7 +57,7 @@ const char HTML_KOD[] PROGMEM = R"=====(
 
         <!-- Direct Numerical Minute configuration layout components input variables -->
         <label>Manual set (minutes):</label><br>
-        <input type="number" id="minutes" value="30" min="1" max="99">
+        <input type="number" id="minutes" value="30" min="1" max="99" oninput="if(this.value > 99) this.value = 99; if(this.value < 1 && this.value !== '') this.value = 1;">
         <br>
         <button class="btn-start" onclick="sendCommand('start')">Start</button>
         <button class="btn-pause" onclick="sendCommand('pause')">Pause</button>
