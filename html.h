@@ -1,4 +1,4 @@
-const char HTML_KOD[] PROGMEM = R"=====(
+const char HTML_CODE[] PROGMEM = R"=====(
 <!DOCTYPE html>
 <html>
 <head>
@@ -169,6 +169,91 @@ const char HTML_KOD[] PROGMEM = R"=====(
         }
 
         // Start initialization routines upon DOM layout generation resolution phases
+        window.onload = initializeWebSocket;
+    </script>
+</body>
+</html>
+)=====";
+
+
+// --- ADDITIONAL FULL-SCREEN DISPLAY PAGE FOR OTHER DEVICES ---
+const char HTML_FULLSCREEN[] PROGMEM = R"=====(
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Fullscreen Timer Display</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            cursor: pointer; /* Indicates the page is interactive */
+        }
+        
+        /* Fully responsive massive monospaced clock display scaled using viewport width units */
+        .fs-display {
+            font-family: 'Courier New', monospace;
+            font-size: 22vw; 
+            color: #2ecc71;
+            font-weight: bold;
+            letter-spacing: 4px;
+            text-align: center;
+            user-select: none;
+        }
+
+        @keyframes blink { 50% { opacity: 0.3; } }
+    </style>
+</head>
+<body>
+    <div class="fs-display" id="fullscreenDisplay">--:--</div>
+
+    <script>
+        let ws;
+
+        // Toggle browser native fullscreen mode on double-click anywhere on the page
+        document.addEventListener('dblclick', function() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.error("Error attempting to enable fullscreen:", err.message);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        });
+
+        function initializeWebSocket() {
+            ws = new WebSocket('ws://' + window.location.hostname + ':81/');
+            
+            ws.onmessage = function(event) {
+                let timeStr = event.data;
+                let displayElement = document.getElementById('fullscreenDisplay');
+                displayElement.innerText = timeStr;
+                
+                // Trigger warning states matching the controller logic if negative time is reached
+                if (timeStr.indexOf('-') === 0) {
+                    displayElement.style.color = "#ff3b30";
+                    displayElement.style.animation = "blink 1s infinite";
+                } else {
+                    displayElement.style.color = "#2ecc71";
+                    displayElement.style.animation = "none";
+                }
+            };
+            
+            ws.onclose = function() {
+                setTimeout(initializeWebSocket, 2000);
+            };
+        }
+
         window.onload = initializeWebSocket;
     </script>
 </body>

@@ -47,7 +47,11 @@ bool displayIsOn = true;               // Current power-on state of the MAX7219 
  * HTTP GET Root handler. Serves the main responsive control panel webpage.
  */
 void handleRoot() {
-  server.send_P(200, "text/html", HTML_KOD);
+  server.send_P(200, "text/html", HTML_CODE);
+}
+
+void handleFullscreen() {
+  server.send_P(200, "text/html", HTML_FULLSCREEN);
 }
 
 /**

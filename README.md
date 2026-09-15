@@ -11,6 +11,7 @@ It features automated Wi-Fi provisioning via a Captive Portal, local hostname ma
 * **Real-Time Synchronization**: Multi-client ecosystem driving dynamic state metrics upstream/downstream over low-latency WebSockets (Port 81).
 * **Zero Hardcoded Credentials**: Integrated `WiFiManager` automatically boots into a secure configuration Captive Portal if local Wi-Fi configuration drops.
 * **Friendly Local URL (mDNS)**: Access the control dashboard via `http://timer.local` directly instead of remembering dynamic IP strings.
+* **Additional Fullscreen page**: Display it on a tablet, remote screen or inside your video recording software. Accessible via `http://timer.local/fullscreen`
 * **Smart UI Safety Lockouts**: The web dashboard automatically locks quick-set selections and manual input boxes while the countdown is actively operational to prevent accidental mid-session data corruption.
 * **Eco Energy Management**: Shifts matrix hardware into a deep power-down shutdown register array mode if left completely idle for over 5 minutes.
 * **Overrun Visual Alarming**: Flashes the entire structural framework (both the web dashboard and physical matrix modules) high-visibility red/on-off loops when speaker runtime crosses into negative overtime overrun territory.
