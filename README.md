@@ -30,6 +30,10 @@ Connect the **WEMOS D1 Mini** to the **MAX7219 (2-Module Cascaded)** segment blo
 | **CS** | **D8** | Dedicated Chip Select Line Register Shifting Latch (GPIO15) |
 | **CLK** | **D5** | System Common Bus Synchronous Clock Line (GPIO14) |
 
+![Connection Diagram](./connection_diagram.png)
+
+(Disclaimer: Connection Diagram picture is AI-generated and might not be accurate)
+
 ---
 
 ## 📚 Required Software Libraries
