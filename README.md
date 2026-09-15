@@ -47,10 +47,10 @@ Ensure the following community core dependencies are loaded into your active **A
 
 1. **Power Up**: Connect the MCU to a standard stable USB or 5V rail infrastructure point.
 2. **Wi-Fi Initial Setup**:
-   * Search for a hot wireless access network point named `Timer_Configuration` using any mobile phone or computer.
+   * Search for a wireless access network point named `Timer_Configuration` using any mobile phone or computer.
    * Access it using the default passkey `timer123`.
    * Pick your venue's venue wireless network profile from the generated graphic pop-up manager dashboard, insert the venue's active security password keys, and tap **Save**.
-3. **Pristup**: The display will automatically scroll the assigned dynamic local IP address. Open any web browser on the same network and surf directly into: **`http://timer.local`**.
+3. **Access**: The display will automatically scroll the assigned dynamic local IP address. Open any web browser on the same network and surf directly into: **`http://timer.local`** or the displayed IP address if mDNS is not configured on the network.
 4. **Control**: Utilize the quick-set buttons (30 min, 45 min, etc.) or dial-in parameters manually via the dynamic responsive dashboard interface.
 
 ---
